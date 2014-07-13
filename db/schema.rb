@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712234136) do
+ActiveRecord::Schema.define(version: 20140714013329) do
 
   create_table "employees", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "status"
-    t.string   "uid"
+    t.string   "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

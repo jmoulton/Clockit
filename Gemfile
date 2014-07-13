@@ -12,6 +12,8 @@ gem 'haml'
 gem 'decent_exposure'
 gem "better_errors"
 gem "bootstrap-sass"
+gem 'autoprefixer-rails'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
