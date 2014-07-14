@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714013329) do
+ActiveRecord::Schema.define(version: 20140714015011) do
 
   create_table "employees", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "status"
     t.string   "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "clocked_in", default: false
   end
 
   create_table "time_sheets", force: true do |t|

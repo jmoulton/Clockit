@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  expose!(:employee, attributes: :employee_params)
+  expose!(:employee)
   expose!(:employees) { Employee.all }
 
   def index
@@ -9,6 +9,31 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+  end
+
+  def employees_clock_in
+    employee = Employee.find(params[:employee])
+
+    if params[:commit] == "Clock In"
+      employee.clock_in! ? (redirect_to employee_success_path) : set_clock_in_error("Employee Is Already Signed In")
+    else
+      set_clock_in_error("Could Not Process Request, Please Try Again Later")
+    end
+  rescue ActiveRecord::RecordNotFound
+    set_clock_in_error("Employee could not be founf")
+  end
+
+  def employees_clock_out
+    if params[:commit] == "Clock Out"
+      employee.clock_out! ? (redirect_to employeed_path) : set_clock_in_error("Employee Is Already Signed Out")
+    else
+      set_clock_in_error("Could Not Process Request, Please Try Again Later")
+    end
+  end
+
+  def set_clock_in_error(msg)
+    flash[:error] = "Employee has aready been clocked #{msg}"
+    redirect_to employees_path
   end
 
   def create
