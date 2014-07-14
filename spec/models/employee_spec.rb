@@ -7,6 +7,7 @@ describe Employee do
       employee.clocked_in.should == false
       employee.clock_in!.should == true
       employee.clocked_in.should == true
+      employee.time_sheets.count.should == 1
     end
 
     it "returns false if an employee is already clocked in" do
@@ -26,6 +27,7 @@ describe Employee do
       employee.update_attributes(:clocked_in => true)
       employee.clock_out!.should == true
       employee.clocked_in.should == false
+      employee.time_sheets.count.should == 1
     end
   end
 end

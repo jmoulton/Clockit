@@ -20,7 +20,7 @@ class EmployeesController < ApplicationController
       set_clock_in_error("Could Not Process Request, Please Try Again Later")
     end
   rescue ActiveRecord::RecordNotFound
-    set_clock_in_error("Employee could not be founf")
+    set_clock_in_error("Employee could not be found")
   end
 
   def employees_clock_out
