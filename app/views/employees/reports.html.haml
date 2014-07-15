@@ -23,7 +23,7 @@
   %table.table.table-striped#reports-table
     %thead
       %tr
-        - (7.days.ago.to_date..Date.today).each do |date|
+        - (6.days.ago.to_date..Date.today).each do |date|
           %th #{date.strftime("%m/%d")}
     %tbody
       - employee.weekly_report.each do |hours|
