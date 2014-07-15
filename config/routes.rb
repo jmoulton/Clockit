@@ -1,7 +1,7 @@
 ClockInClockOut::Application.routes.draw do
   root 'employees#index'
-  match '/employees_clock_in', to: 'employees#employees_clock_in', via: [:get, :post]
-  match '/employees_clock_out', to: 'employees#employees_clock_out', via: [:get, :post]
+  match '/employee_clock', to: 'employees#clock', via: [:get, :post]
   resources :employees do
+    get :successful_clock
   end
 end

@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :set_clock_in_error
+
   expose!(:employee)
   expose!(:employees) { Employee.all }
 
@@ -11,29 +13,34 @@ class EmployeesController < ApplicationController
   def edit
   end
 
-  def employees_clock_in
+  def clock
     employee = Employee.find(params[:employee])
-
-    if params[:commit] == "Clock In"
-      employee.clock_in! ? (redirect_to employee_success_path) : set_clock_in_error("Employee Is Already Signed In")
+    case params[:button]
+    when "Clock In"
+      clock_in(employee)
+    when "Clock Out"
+      clock_out(employee)
     else
       set_clock_in_error("Could Not Process Request, Please Try Again Later")
     end
-  rescue ActiveRecord::RecordNotFound
-    set_clock_in_error("Employee could not be found")
   end
 
-  def employees_clock_out
-    if params[:commit] == "Clock Out"
-      employee.clock_out! ? (redirect_to employeed_path) : set_clock_in_error("Employee Is Already Signed Out")
-    else
-      set_clock_in_error("Could Not Process Request, Please Try Again Later")
-    end
+  def clock_in(employee)
+    employee.clock_in! ? (set_clock_success(employee, "Clocked In")) : set_clock_in_error("Employee Is Already Signed In")
+  end
+
+  def clock_out(employee)
+     employee.clock_out! ? (set_clock_success(employee, "Clocked Out")) : set_clock_in_error("Employee Is Already Signed Out")
   end
 
   def set_clock_in_error(msg)
-    flash[:error] = "Employee has aready been clocked #{msg}"
+    flash[:error] = "#{msg}"
     redirect_to employees_path
+  end
+
+  def set_clock_success(employee, msg)
+    flash[:notice] = "Employee Successfully #{msg}"
+    redirect_to employee_successful_clock_path(employee)
   end
 
   def create
@@ -64,6 +71,9 @@ class EmployeesController < ApplicationController
   def destroy
     employee.destroy
     redirect_to employees_url
+  end
+
+  def successful_clock
   end
 
   private

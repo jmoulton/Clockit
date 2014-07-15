@@ -61,6 +61,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    flat-ui-rails (0.0.2)
     haml (4.0.3)
       tilt
     hike (1.2.3)
@@ -177,6 +178,7 @@ DEPENDENCIES
   debugger (= 1.6.6)
   decent_exposure
   factory_girl_rails
+  flat-ui-rails
   haml
   jbuilder (~> 1.2)
   jquery-rails

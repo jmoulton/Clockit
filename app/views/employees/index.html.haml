@@ -1,5 +1,5 @@
 %h1 Enter Employee ID
-
-= form_tag(employees_clock_in_path)
-= text_field_tag "employee"
-= submit_tag "Clock In"
+= form_tag(employee_clock_path)
+= text_field_tag "employee", "", { id: "employee" }
+= button_tag "Clock In", { class: "clock-in", value: "Clock In" }
+= button_tag "Clock Out",  { class: "clock-out", value: "Clock Out"}
