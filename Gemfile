@@ -26,6 +26,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'rails_12factor'
+  gem "pg"
+end
+
 #Debugging
 gem 'debugger', '1.6.6'
 gem 'pry'
