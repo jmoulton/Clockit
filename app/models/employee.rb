@@ -15,7 +15,7 @@ class Employee < ActiveRecord::Base
 
   def clock_out!
     clocked_in ? update_attributes(clocked_in: false) : (return false)
-    time_sheet = time_sheets.open.last
+    time_sheet = time_sheets.where(open: true).last
     time_sheet.close!
     true
   end
