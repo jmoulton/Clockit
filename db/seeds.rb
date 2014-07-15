@@ -48,9 +48,11 @@ employees = [
   }
 ]
 
-employees.each do |e|
-  employee = Employee.create(e[:employee])
-  e[:time_sheets].each do |t|
-    employee.time_sheets << TimeSheet.create(t)
+unless Employee.count > 0
+  employees.each do |e|
+    employee = Employee.create(e[:employee])
+    e[:time_sheets].each do |t|
+      employee.time_sheets << TimeSheet.create(t)
+    end
   end
 end
