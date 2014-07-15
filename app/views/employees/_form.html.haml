@@ -8,7 +8,9 @@
         - @employee.errors.full_messages.each do |msg|
           %li= msg
   = f.input :first_name
+  %br
   = f.input :last_name
+  %br
   = f.input :rank, collection: [Employee::RANK[:admin], Employee::RANK[:employee]]
   %br
   = f.button :submit

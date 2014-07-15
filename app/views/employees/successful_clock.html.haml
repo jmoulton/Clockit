@@ -1,4 +1,24 @@
-- if employee.clocked_in
-  %h1 Clocked In
-- else
-  %h1 Clocked Out
+= link_to 'Back', employees_path
+.success
+  - if employee.clocked_in
+    %h1 Successfully Clocked In at #{employee.time_sheets.last.clocked_in_at.strftime("%H:%M")}!
+    %ul
+      %li
+        First Name: #{employee.first_name}
+      %li
+        Last Name: #{employee.last_name}
+      %li
+        Total Hours worked today: #{employee.daily_hours}
+    %br
+    = link_to "Weekly Report", employee_reports_path(employee), {class: "btn" }
+  - else
+    %h1 Successfully Clocked Out at at #{employee.time_sheets.last.clocked_out_at.strftime("%H:%M")}!
+    %ul
+      %li
+        First Name: #{employee.first_name}
+      %li
+        Last Name: #{employee.last_name}
+      %li
+        Total hours worked in shift: #{employee.time_sheets.last.hours_worked}
+    %br
+    = link_to "Weekly Report", employee_reports_path(employee), {class: "btn" }
