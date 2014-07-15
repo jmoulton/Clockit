@@ -8,7 +8,7 @@
       %li
         Last Name: #{employee.last_name}
       %li
-        Total Hours worked today: #{employee.daily_hours}
+        Total Hours worked today: #{employee.daily_hours(Date.today)}
     %br
     = link_to "Weekly Report", employee_reports_path(employee), {class: "btn" }
   - else

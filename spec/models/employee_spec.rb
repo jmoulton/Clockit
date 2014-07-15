@@ -55,7 +55,7 @@ describe Employee do
     end
     it "returns the total hours worked for the given day" do
       employee.time_sheets = [time_sheet_1, time_sheet_2]
-      employee.daily_hours.should == 3
+      employee.daily_hours(Date.today).should == 3
     end
   end
 

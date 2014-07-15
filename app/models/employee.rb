@@ -20,11 +20,17 @@ class Employee < ActiveRecord::Base
     true
   end
 
-  def daily_hours
-    sheets = TimeSheet.where("clocked_out_at >= ?", Date.today)
+  def daily_hours(date)
+    sheets = time_sheets.where(clocked_out_at: date.beginning_of_day...date.end_of_day)
     total_hours = 0
     sheets.each { |s| total_hours += s.hours_worked }
     total_hours
+  end
+
+  def weekly_report
+    (6.days.ago.to_date..Date.today).map do |date|
+      daily_hours(date)
+    end
   end
 
   def is_admin?

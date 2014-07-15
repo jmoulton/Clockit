@@ -1,0 +1,32 @@
+%H1 Report for #{employee.first_name} #{employee.last_name}
+%br
+- if employee.is_admin?
+  %label Hours Worked
+  %table.table.table-striped#reports-table
+    %thead
+      %tr
+        %th Last Name
+        %th ID
+        - (6.days.ago.to_date..Date.today).each do |date|
+          %th #{date.strftime("%m/%d")}
+    %tbody
+      - Employee.all.each do |e|
+        %tr
+          %th #{e.last_name}
+          %th #{e.id}
+          - e.weekly_report.each do |hours|
+            %th #{hours}
+  %br
+  = link_to 'Back', employees_path, { class: "btn" }
+- else
+  %label Hours Worked
+  %table.table.table-striped#reports-table
+    %thead
+      %tr
+        - (7.days.ago.to_date..Date.today).each do |date|
+          %th #{date.strftime("%m/%d")}
+    %tbody
+      - employee.weekly_report.each do |hours|
+        %th #{hours}
+  %br
+  = link_to 'Back', employees_path, { class: "btn" }
