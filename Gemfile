@@ -15,6 +15,7 @@ gem "better_errors"
 gem "bootstrap-sass"
 gem 'autoprefixer-rails'
 gem 'simple_form'
+gem 'timecop'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

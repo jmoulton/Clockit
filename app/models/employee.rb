@@ -27,4 +27,8 @@ class Employee < ActiveRecord::Base
     total_hours
   end
 
+  def is_admin?
+    return rank == RANK[:admin]
+  end
+
 end
