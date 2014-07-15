@@ -1,2 +1,32 @@
 @import "bootstrap";
 @import "flat-ui";
+body {
+  background-color: #F5F5F5;
+  padding-top: 20px;
+}
+
+#main {
+  width: 980px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #2678bc;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  font-size: 42px;
+}
+
+.index {
+  text-align: center;
+
+  #employee {
+    margin: 44px;
+  }
+
+  .btn {
+    margin: 23px;
+  }
+}

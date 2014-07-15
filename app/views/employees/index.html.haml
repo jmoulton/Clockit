@@ -1,5 +1,7 @@
-%h1 Enter Employee ID
-= form_tag(employee_clock_path)
-= text_field_tag "employee", "", { id: "employee" }
-= button_tag "Clock In", { class: "clock-in", value: "Clock In" }
-= button_tag "Clock Out",  { class: "clock-out", value: "Clock Out"}
+.index
+  %h1 Enter Employee ID
+  = form_tag(employee_clock_path)
+  = text_field_tag "employee", "", { id: "employee" }
+  %br
+  = button_tag "Clock In", { id: "clock-in", class: "btn", value: "Clock In" }
+  = button_tag "Clock Out",  { id: "clock-out", class: "btn", value: "Clock Out"}

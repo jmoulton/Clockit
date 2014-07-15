@@ -10,4 +10,6 @@
   = f.input :first_name
   = f.input :last_name
   = f.input :rank, collection: [Employee::RANK[:admin], Employee::RANK[:employee]]
+  %br
   = f.button :submit
+  %br
