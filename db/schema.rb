@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714015011) do
+ActiveRecord::Schema.define(version: 20140715021909) do
 
   create_table "employees", force: true do |t|
     t.string   "first_name"
@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20140714015011) do
 
   create_table "time_sheets", force: true do |t|
     t.integer  "employee_id"
-    t.string   "clock_type"
-    t.datetime "clocked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "clocked_in_at"
+    t.datetime "clocked_out_at"
+    t.integer  "hours_worked"
+    t.boolean  "open",           default: true
   end
 
 end
